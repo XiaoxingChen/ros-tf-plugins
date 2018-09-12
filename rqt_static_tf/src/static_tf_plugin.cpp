@@ -43,7 +43,7 @@ StaticTFPlugin::StaticTFPlugin() :
   widget_(0),
   tfListener(tfBuffer),
   block(false) {
-  setObjectName("StaticTFPlugin");
+    setObjectName("StaticTFPlugin");
 }
 
 /*****************************************************************************/

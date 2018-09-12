@@ -14,11 +14,19 @@ find_package(catkin REQUIRED
     rqt_gui_cpp
 )
 
-find_package(Qt4 COMPONENTS QtCore QtGui REQUIRED)
+# find_package(Qt4 COMPONENTS QtCore QtGui REQUIRED)
+find_package(Qt5Widgets CONFIG REQUIRED)
+find_package(Qt5Core)
+find_package(Qt5Gui CONFIG REQUIRED)
 
 find_package(Eigen3 REQUIRED)
 
-include(${QT_USE_FILE})
+include_directories(${Qt5Widgets_INCLUDE_DIRS})
+include_directories(${Qt5Gui_INCLUDE_DIRS})
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
 
 catkin_python_setup()
 
@@ -51,8 +59,8 @@ catkin_package(
     rqt_gui_cpp
 )
 
-qt4_wrap_cpp(rqt_static_tf_MOCS ${rqt_static_tf_HDRS})
-qt4_wrap_ui(rqt_static_tf_UIS_H ${rqt_static_tf_UIS})
+qt5_wrap_cpp(rqt_static_tf_MOCS ${rqt_static_tf_HDRS})
+qt5_wrap_ui(rqt_static_tf_UIS_H ${rqt_static_tf_UIS})
 
 include_directories(
   ${rqt_static_tf_INCLUDE_DIRECTORIES}
